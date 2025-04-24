@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">保存</string>
+    <string name="properties">属性</string>
+    <string name="protocol">协议</string>
+    <string name="host">主机名</string>
+    <string name="port">端口</string>
+</resources>

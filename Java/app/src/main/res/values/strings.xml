@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Gurux network</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Gurux network</string>
+    <string name="nav_header_subtitle">gurux@gurux.fi</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="protocol">Protocol</string>
+    <string name="hostName">Hostname</string>
+    <string name="port">Port</string>
+    <string name="send">Send</string>
+    <string name="hex">Hex</string>
+    <string name="clear">Clear</string>
+    <string name="receivedData">Received data</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="saved">Settings saved.</string>
+</resources>

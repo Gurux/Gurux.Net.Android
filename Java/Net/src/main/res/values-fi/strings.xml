@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">Tallenna</string>
+    <string name="properties">Ominaisuudet</string>
+    <string name="protocol">Protokolla</string>
+    <string name="host">Isäntänimi</string>
+    <string name="port">Portti</string>
+</resources>

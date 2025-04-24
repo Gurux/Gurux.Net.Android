@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">Kaydet</string>
+    <string name="properties">Özellikler</string>
+    <string name="protocol">Protokol</string>
+    <string name="host">Sunucu adı</string>
+    <string name="port">Port</string>
+</resources>

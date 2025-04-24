@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">Salva</string>
+    <string name="properties">Proprietà</string>
+<string name="protocol">Protocollo</string>
+<string name="host">Nome host</string>
+<string name="port">Porta</string>
+</resources>

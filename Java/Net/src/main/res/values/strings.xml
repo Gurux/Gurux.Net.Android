@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">gurux.net.android</string>
+    <string name="save">Save</string>
+    <string name="properties">Properties</string>
+    <string name="protocol">Protocol</string>
+    <string name="host">Host name</string>
+    <string name="port">Port</string>
+</resources>

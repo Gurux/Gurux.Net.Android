@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">सहेजें</string>
+    <string name="properties">गुण</string>
+    <string name="protocol">प्रोटोकॉल</string>
+    <string name="host">होस्ट नाम</string>
+    <string name="port">पोर्ट</string>
+</resources>

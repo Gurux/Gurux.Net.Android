@@ -1,0 +1,7 @@
+<resources>
+    <string name="save">Gem</string>
+    <string name="properties">Egenskaber</string>
+<string name="protocol">Protokol</string>
+<string name="host">Værtsnavn</string>
+<string name="port">Port</string>
+</resources>
