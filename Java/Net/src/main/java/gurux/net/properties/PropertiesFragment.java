@@ -85,21 +85,27 @@ public class PropertiesFragment extends Fragment {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(container.getContext(),
                     android.R.layout.simple_list_item_1, rows);
             listView.setAdapter(adapter);
-            listView.setOnItemClickListener((parent, view, position, id) -> {
-                switch (position) {
-                    case 0:
-                        updateProtocol();
-                        break;
-                    case 1:
-                        updateHost();
-                        break;
-                    case 2:
-                        updatePort();
-                        break;
-                    default:
-                        //Do nothing.
-                }
-            });
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    //User can't change the settings when the connection is open.
+                    if (!mNet.isOpen()) {
+                            switch (position) {
+                                case 0:
+                                    updateProtocol();
+                                    break;
+                                case 1:
+                                    updateHost();
+                                    break;
+                                case 2:
+                                    updatePort();
+                                    break;
+                                default:
+                                    //Do nothing.
+                            }
+                        }
+                    else {
+                        Toast.makeText(getActivity(), R.string.connectionEstablished, Toast.LENGTH_SHORT).show();
+                    }
+                });
         }
         return root;
     }

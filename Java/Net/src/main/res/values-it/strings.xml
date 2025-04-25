@@ -1,7 +1,7 @@
 <resources>
-    <string name="save">Salva</string>
+    <string name="connectionEstablished">Le impostazioni non possono essere modificate mentre la connessione è attiva.</string>
     <string name="properties">Proprietà</string>
-<string name="protocol">Protocollo</string>
-<string name="host">Nome host</string>
-<string name="port">Porta</string>
+    <string name="protocol">Protocollo</string>
+    <string name="host">Nome host</string>
+    <string name="port">Porta</string>
 </resources>

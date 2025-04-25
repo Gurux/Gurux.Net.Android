@@ -122,6 +122,7 @@ public class HomeFragment extends Fragment implements IGXMediaListener {
             //Remove old listener.
             net.removeListener(this);
             net.addListener(this);
+            enableUI(net.isOpen());
             info.setText(String.format(Locale.getDefault(), "%s %s:%d", net.getProtocol(), net.getHostName(), net.getPort()));
         });
         return root;

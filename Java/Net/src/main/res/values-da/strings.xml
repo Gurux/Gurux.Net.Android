@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">Gem</string>
+    <string name="connectionEstablished">Indstillinger kan ikke ændres, mens forbindelsen er aktiv.</string>
     <string name="properties">Egenskaber</string>
 <string name="protocol">Protokol</string>
 <string name="host">Værtsnavn</string>

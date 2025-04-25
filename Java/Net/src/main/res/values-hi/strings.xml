@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">सहेजें</string>
+    <string name="connectionEstablished">कनेक्शन स्थापित होने पर सेटिंग्स बदली नहीं जा सकती हैं।</string>
     <string name="properties">गुण</string>
     <string name="protocol">प्रोटोकॉल</string>
     <string name="host">होस्ट नाम</string>

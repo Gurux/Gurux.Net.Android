@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">Tallenna</string>
+    <string name="connectionEstablished">Asetuksia ei voi muuttaa yhteyden ollessa muodostettu.</string>
     <string name="properties">Ominaisuudet</string>
     <string name="protocol">Protokolla</string>
     <string name="host">Isäntänimi</string>

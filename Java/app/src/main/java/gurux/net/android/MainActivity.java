@@ -141,6 +141,18 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
         super.onStop();
     }
 
+    /*
+     * Settings activity is disabled when the connection is open.
+     */
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem settingsItem = menu.findItem(R.id.action_settings);
+        if (settingsItem != null) {
+            settingsItem.setEnabled(!mNet.isOpen());
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     @Override
     public void onDestroy() {
         if (mNet != null) {
@@ -161,9 +173,6 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
 
     @Override
     public void onMediaStateChange(Object sender, MediaStateEventArgs e) {
-        if (e.getState() == MediaState.OPEN && mNet != null) {
-            saveSettings(mNet);
-        }
     }
 
     @Override

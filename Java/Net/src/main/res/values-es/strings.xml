@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">Guardar</string>
+    <string name="connectionEstablished">No se pueden cambiar los ajustes mientras la conexión esté establecida.</string>
     <string name="properties">Propiedades</string>
 <string name="protocol">Protocolo</string>
 <string name="host">Nombre del host</string>

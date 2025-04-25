@@ -1,7 +1,7 @@
 <resources>
-    <string name="save">Vista</string>
+    <string name="connectionEstablished">Ekki er hægt að breyta stillingum á meðan tenging er virk.</string>
     <string name="properties">Eiginleikar</string>
-<string name="protocol">Samskiptaregla</string>
-<string name="host">Vélarnafn</string>
-<string name="port">Gátt</string>
+    <string name="protocol">Samskiptaregla</string>
+    <string name="host">Vélarnafn</string>
+    <string name="port">Gátt</string>
 </resources>

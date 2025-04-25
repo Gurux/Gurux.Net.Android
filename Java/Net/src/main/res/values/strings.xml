@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">gurux.net.android</string>
-    <string name="save">Save</string>
+    <string name="connectionEstablished">Settings cannot be changed while the connection is established.</string>
     <string name="properties">Properties</string>
     <string name="protocol">Protocol</string>
     <string name="host">Host name</string>

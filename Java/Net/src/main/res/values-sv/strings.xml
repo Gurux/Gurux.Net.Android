@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">Spara</string>
+    <string name="connectionEstablished">Inställningar kan inte ändras medan anslutningen är aktiv.</string>
     <string name="properties">Egenskaper</string>
     <string name="protocol">Protokoll</string>
     <string name="host">Värdnamn</string>

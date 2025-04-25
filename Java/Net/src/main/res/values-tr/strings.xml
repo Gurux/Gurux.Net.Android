@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">Kaydet</string>
+    <string name="connectionEstablished">Bağlantı kurulduğunda ayarlar değiştirilemez.</string>
     <string name="properties">Özellikler</string>
     <string name="protocol">Protokol</string>
     <string name="host">Sunucu adı</string>

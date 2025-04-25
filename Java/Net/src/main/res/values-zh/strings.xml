@@ -1,5 +1,5 @@
 <resources>
-    <string name="save">保存</string>
+    <string name="connectionEstablished">连接已建立时无法更改设置。</string>
     <string name="properties">属性</string>
     <string name="protocol">协议</string>
     <string name="host">主机名</string>
