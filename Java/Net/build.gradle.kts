@@ -57,7 +57,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "org.gurux"
                 artifactId = "gurux.net.android"
-                version = "1.0.2"
+                version = "1.0.3"
 
                 pom {
                     name.set("gurux.net.android")

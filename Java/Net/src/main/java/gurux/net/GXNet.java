@@ -37,6 +37,7 @@ package gurux.net;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.util.Xml;
 
 import androidx.fragment.app.Fragment;
@@ -728,6 +729,10 @@ public class GXNet implements IGXMedia2, AutoCloseable {
 
     @Override
     public final void addListener(final IGXMediaListener listener) {
+        if (mMediaListeners.contains(listener))
+        {
+            Log.w("GXNet", "Listener already added.");
+        }
         mMediaListeners.add(listener);
     }
 

@@ -79,9 +79,7 @@ public class HomeFragment extends Fragment implements IGXMediaListener {
         final Button clearBtn = binding.clearBtn;
         final Button sendBtn = binding.sendBtn;
         final CheckBox hexCb = binding.hex;
-        hexCb.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            bHex = isChecked;
-        });
+        hexCb.setOnCheckedChangeListener((buttonView, isChecked) -> bHex = isChecked);
         openBtn.setOnClickListener(v -> {
             try {
                 final GXNet net = homeViewModel.getNet().getValue();
@@ -98,9 +96,7 @@ public class HomeFragment extends Fragment implements IGXMediaListener {
             }
         });
 
-        clearBtn.setOnClickListener(v -> {
-            binding.receivedData.setText("");
-        });
+        clearBtn.setOnClickListener(v -> binding.receivedData.setText(""));
 
         sendBtn.setOnClickListener(v -> {
             try {

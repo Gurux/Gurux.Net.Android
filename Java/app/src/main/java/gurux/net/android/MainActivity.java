@@ -2,12 +2,21 @@ package gurux.net.android;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -23,7 +32,6 @@ import gurux.common.MediaStateEventArgs;
 import gurux.common.PropertyChangedEventArgs;
 import gurux.common.ReceiveEventArgs;
 import gurux.common.TraceEventArgs;
-import gurux.common.enums.MediaState;
 import gurux.net.GXNet;
 import gurux.net.android.databinding.ActivityMainBinding;
 import gurux.net.android.ui.home.HomeViewModel;
@@ -33,10 +41,6 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
 
     private AppBarConfiguration mAppBarConfiguration;
     private GXNet mNet;
-
-
-    //PreferenceManager is used to share data between the properties activity and main activity.
-    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
         setContentView(binding.getRoot());
 
         //PreferenceManager is used to share data between the properties activity and main activity.
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.registerOnSharedPreferenceChangeListener((sharedPreferences, key) -> {
             if ("mediaSettings".equals(key)) {
                 String settings = sharedPreferences.getString("mediaSettings", null);
@@ -78,16 +82,69 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
                 //Add properties fragment.
-                R.id.nav_properties)
+                R.id.nav_properties,
+                //Add info.
+                R.id.nav_info)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_info) {
+                try {
+                    PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+                    LinearLayout layout = new LinearLayout(this);
+                    layout.setOrientation(LinearLayout.VERTICAL);
+                    layout.setPadding(50, 40, 50, 10);
+
+                    final TextView copyright = new EditText(this);
+                    copyright.setMovementMethod(LinkMovementMethod.getInstance());
+                    copyright.setText(R.string.copyright);
+                    copyright.setTextIsSelectable(false);
+                    copyright.setFocusable(false);
+                    copyright.setClickable(false);
+                    layout.addView(copyright);
+
+                    final TextView version = new EditText(this);
+                    version.setMovementMethod(LinkMovementMethod.getInstance());
+                    version.setText(String.format("Version: %s", packageInfo.versionName));
+                    version.setTextIsSelectable(false);
+                    version.setFocusable(false);
+                    version.setClickable(false);
+                    layout.addView(version);
+
+                    final TextView url = new EditText(this);
+                    url.setMovementMethod(LinkMovementMethod.getInstance());
+                    url.setText(HtmlCompat.fromHtml("<a href='https://www.gurux.fi'>More info</a>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+                    url.setLinksClickable(true);
+                    url.setFocusable(false);
+                    url.setTextIsSelectable(false);
+                    layout.addView(url);
+                    new AlertDialog.Builder(this)
+                            .setTitle("About Gurux network media")
+                            .setView(layout)
+                            .setPositiveButton(android.R.string.ok, (dialog, which) -> dialog.dismiss())
+                            .show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                drawer.closeDrawer(GravityCompat.START);
+                return true;
+            }
+            boolean handled = NavigationUI.onNavDestinationSelected(item, navController);
+            if (handled) {
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            return handled;
+        });
     }
 
     /**
-     * Read last used settings.
+     * Read settings.
      */
     private void readSettings(GXNet net) {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
@@ -95,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
     }
 
     /**
-     * Save last used settings.
+     * Save settings.
      */
     private void saveSettings(GXNet net) {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
@@ -180,6 +237,9 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
 
     }
 
+    /*
+    onPropertyChanged is called when user change settings from the fragment.
+     */
     @Override
     public void onPropertyChanged(Object sender, PropertyChangedEventArgs e) {
         if (mNet != null) {
