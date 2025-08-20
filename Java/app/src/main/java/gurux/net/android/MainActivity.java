@@ -178,7 +178,8 @@ public class MainActivity extends AppCompatActivity implements IGXMediaListener 
         }
         //Show properties activity.
         if (id == R.id.action_settings) {
-            return mNet.properties(this);
+            mNet.properties(this);
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -648,11 +648,10 @@ public class GXNet implements IGXMedia2, AutoCloseable {
         }
     }
 
-    public boolean properties(final Activity activity) {
+    public void properties(final Activity activity) {
         Intent intent = new Intent(activity, GXPropertiesActivity.class);
         intent.putExtra("mediaSettings", getSettings());
         activity.startActivity(intent);
-        return true;
     }
 
 
@@ -764,5 +763,11 @@ public class GXNet implements IGXMedia2, AutoCloseable {
     @Override
     public Object getAsyncWaitHandle() {
         return null;
+    }
+
+    @Override
+    public int getIconResId()
+    {
+        return R.drawable.ic_launcher_net;
     }
 }
