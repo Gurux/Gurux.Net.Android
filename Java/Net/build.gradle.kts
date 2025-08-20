@@ -147,6 +147,9 @@ jreleaser {
             tagName.set("v{{projectVersion}}")
             releaseName.set("Gurux net Android {{projectVersion}}")
             changelog {
+                contributors{
+                    enabled.set(false)
+                }
                 preset.set("conventional-commits")
                 formatted.set(org.jreleaser.model.Active.ALWAYS)
             }
