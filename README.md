@@ -17,7 +17,7 @@ If you have problems you can ask your questions in Gurux [Forum](http://www.guru
 You can get source codes from http://www.github.com/gurux or if you use gradle add this to your build.gradle-file:
 
 ```java
-compile 'org.gurux:gurux.net.android:1.0.1'
+compile 'org.gurux:gurux.net.android:3.0.1'
 ```
 
 Simple example
