@@ -37,6 +37,7 @@ package gurux.net;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.util.Log;
 import android.util.Xml;
 
@@ -430,7 +431,7 @@ public class GXNet implements IGXMedia2, AutoCloseable {
                                     + HostName + " Port: "
                                     + String.valueOf(Port)));
                 }
-                mReceiver = new GXReceiveThread(this,mSocket);
+                mReceiver = new GXReceiveThread(this, mSocket);
                 mReceiver.start();
                 notifyMediaStateChange(MediaState.OPEN);
             } else {
@@ -728,8 +729,7 @@ public class GXNet implements IGXMedia2, AutoCloseable {
 
     @Override
     public final void addListener(final IGXMediaListener listener) {
-        if (mMediaListeners.contains(listener))
-        {
+        if (mMediaListeners.contains(listener)) {
             Log.w("GXNet", "Listener already added.");
         }
         mMediaListeners.add(listener);
@@ -766,8 +766,17 @@ public class GXNet implements IGXMedia2, AutoCloseable {
     }
 
     @Override
-    public int getIconResId()
-    {
+    public int getIconResId() {
         return R.drawable.ic_launcher_net;
+    }
+
+    @Override
+    public String getVersion() {
+        try {
+            PackageInfo packageInfo = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 }
